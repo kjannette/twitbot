@@ -1,27 +1,30 @@
-/*
-import logo from './logo.svg';
 import './App.css';
 
-function App() {
+const App = () => {
+
+  let search; 
+
+  const outputTweets = () => {
+    console.log('something')
+  }
+
+  const getAllTweets = () => {
+    console.log('getAllTweets HAS FIRED')
+      const url = '/tweets/' + search.value;
+      fetch(url).then(function (response) {
+          return response.json()
+      }).then(function (data) {
+          outputTweets(data.statuses)
+      }).catch(function (error) {
+          console.log(JSON.stringify(error));
+      })
+  }
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <div>This is client App.js</div>
     </div>
   );
 }
 
 export default App;
-*/
