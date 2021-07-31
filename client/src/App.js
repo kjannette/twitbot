@@ -2,7 +2,7 @@ import './App.css';
 
 const App = () => {
 
-  let search; 
+  let searchTerm; 
 
   const outputTweets = (data) => {
     console.log(data)
@@ -10,7 +10,7 @@ const App = () => {
 
   const getAllTweets = () => {
     console.log('getAllTweets HAS FIRED')
-      const url = '/tweets/' + 'sports'//search.value;
+      const url = '/tweets/' + searchTerm;
       fetch(url).then(function (response) {
           return response.json()
       }).then(function (data) {
@@ -23,8 +23,8 @@ const App = () => {
   return (
     <div className="App">
       <div>This is client App.js</div>
-      <input type="text"></input>
-      <button onClick={getAllTweets}></button>
+      <input type="text" value={searchTerm}></input>
+      <button type="submit" onClick={getAllTweets}></button>
     </div>
   );
 }
