@@ -33,26 +33,12 @@ const App = () => {
       <input type="text" value={searchTerm}></input>
       <button type="submit" onClick={getTweets}></button>
       {
-        state.map((item, index) => {
+        state.map((item, index) => (
           <div key={index}>{item.text}</div>
-        })
+        ))
       }
     </div>
   );
 }
 
 export default App;
-
-/*
-
-      {state.map(item, i => {
-        <div id={i}>{item.text}</div>
-      }
-      )}
-
-      (function () {
-          fetch('http://localhost:3000/users.json')
-          .then(response => response.json())
-          .then(data => setState(data));
-        })();
-*/
