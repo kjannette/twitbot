@@ -10,11 +10,13 @@ const T = new twit({
     , access_token_secret: 'i7iBh0nZudlwoTNqNKK1VSIMWFuiXo5T7AlfNOrnZ7MP4'
     , timeout_ms: 60 * 1000,
 })
+
 app.use(express.static(path.join(__dirname, 'public')));
-app.use(bodyParser.json());
-app.use(bodyParser.urlencoded({
+app.use(express.json());
+app.use(express.urlencoded({
     extended: false
-}));
+  }));
+
 app.get('/tweets/:search', function (req, res) {
     T.get('search/tweets', {
         q: req.params.search
@@ -23,6 +25,7 @@ app.get('/tweets/:search', function (req, res) {
         res.json(data);
     })
 })
+
 app.post('/comment/', function (req, res) {
     console.log(req.body.comment);
     T.post('statuses/update', {
@@ -31,14 +34,5 @@ app.post('/comment/', function (req, res) {
         res.json(data)
     })
 })
+
 app.listen(3001)
-
-
-/*
-
-app.use(express.static(path.join(__dirname, 'public')));
-app.use(express.urlencoded({
-    extended: false
-  }));
-
-*/
