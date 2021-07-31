@@ -5,22 +5,17 @@ const App = () => {
 
   const [state, setState ] = useState([])
   const [searchTerm, setSearchTerm] = useState('')
-  /*
-  state.forEach(item => {
-    console.log("this is a tweet", item)
-  })
-*/
 
   console.log(state)
 
   const getTweets = () => {
     console.log(searchTerm)
     const url = '/tweets/' + searchTerm;
-    fetch(url).then(function (response) {
+    fetch(url).then((response) => {
         return response.json()
-    }).then(function (data) {
+    }).then((data) => {
         setState(data.statuses)
-    }).catch(function (error) {
+    }).catch((error) => {
         console.log(JSON.stringify(error));
     })
   }
