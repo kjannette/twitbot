@@ -42,8 +42,8 @@ const Dashboard = () => {
         <div>
             {
                 hashTags.map((tag) =>
-                    tag.map(item => (
-                        <div>{item}</div>
+                    tag.map((item, index) => (
+                        <div key={index}>{item}</div>
                     ))
                 )
             }
@@ -79,8 +79,6 @@ const dummyTags = [
     ['itemOne', 'itemTwo', 'itemThree'],
     []
 ]
-
-
 
 dummyTags.map((tag) => {
     tag.map((item) => {
