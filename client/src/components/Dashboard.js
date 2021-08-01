@@ -41,8 +41,6 @@ const Dashboard = () => {
         return res;
      };
 
-    console.log(simplifyArray(initial))
-
     const hashTags = simplifyArray(initial)
 
     console.log('hashTags', hashTags)
