@@ -25,11 +25,27 @@ const Dashboard = () => {
         }
     })
 
-    const hashTags = state.map((tweet) => {
+    const initial = state.map((tweet) => {
         return tweet.entities.hashtags.map((hashtag) => {
           return hashtag.text;
         });
       });
+
+      const simplifyArray = (arr = []) => {
+        const res = [];
+        arr.forEach(element => {
+           element.forEach(el => {
+              res.push(el);
+           });
+        });
+        return res;
+     };
+
+    console.log(simplifyArray(initial))
+
+    const hashTags = simplifyArray(initial)
+
+    console.log('hashTags', hashTags)
 
     const getTweets = () => {
       console.log(searchTerm)
@@ -64,10 +80,9 @@ const Dashboard = () => {
         }
         <div>
             {
-                hashTags.map((tag) =>
-                    tag.map((item, index) => (
-                        <button key={index} onClick={() => handleFilter(item)}>{item}</button>
-                    ))
+                hashTags.map((tag, index) =>
+                        <button key={index} onClick={() => handleFilter(tag)}>{tag}</button>
+
                 )
             }
         </div>
