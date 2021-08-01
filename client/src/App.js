@@ -1,35 +1,12 @@
 import React, { useState } from 'react';
+import DashBoard from './components/Dashboard'
 import './App.css';
 
 const App = () => {
-
-  const [state, setState ] = useState([])
-  const [searchTerm, setSearchTerm] = useState('')
-
-  console.log(state)
-
-  const getTweets = () => {
-    console.log(searchTerm)
-    const url = '/tweets/' + searchTerm;
-    fetch(url).then((response) => {
-        return response.json()
-    }).then((data) => {
-        setState(data.statuses)
-    }).catch((error) => {
-        console.log(JSON.stringify(error));
-    })
-  }
-
+  
   return (
-    <div className="App">
-      <div>This is client App.js</div>
-      <input type="text" onChange={event => setSearchTerm(event.target.value)}></input>
-      <button type="submit" onClick={getTweets}></button>
-      {
-        state.map((item, index) => (
-          <div key={index}>`${item.text}`</div>
-        ))
-      }
+    <div>
+      <DashBoard />
     </div>
   );
 }
