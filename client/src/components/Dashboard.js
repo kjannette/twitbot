@@ -11,6 +11,7 @@ const Dashboard = () => {
         console.log('target hashtag', state[0].entities.hashtags[0].text)
     }
 */
+
     state.forEach((tweet) => {
         console.log(tweet.entities.hashtags)
         if (tweet.entities.hashtags) {
