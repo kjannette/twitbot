@@ -25,15 +25,16 @@ const Dashboard = () => {
         }
     })
 
-    const initialTags = state.map((tweet) => {
-        return tweet.entities.hashtags.map((hashtag) => {
-          return hashtag.text;
-        });
-      });
+    const simpleArray = () => {
 
-      const simplifyArray = (arr = []) => {
-          console.log('arr inside simplify', arr)
+        const arr = state.map((tweet) => {
+            return tweet.entities.hashtags.map((hashtag) => {
+              return hashtag.text;
+            });
+          });
+
         const res = [];
+        
         arr.forEach(element => {
            element.forEach(el => {
               res.push(el);
@@ -42,9 +43,7 @@ const Dashboard = () => {
         return res;
      };
 
-    const hashTags = simplifyArray(initialTags)
-
-    console.log('hashTags', hashTags)
+    const hashTags = simpleArray()
 
     const getTweets = () => {
       console.log(searchTerm)
