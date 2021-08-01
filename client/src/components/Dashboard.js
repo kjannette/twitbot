@@ -7,7 +7,7 @@ const Dashboard = () => {
 
     console.log('Whole state', state)
 
-    if (state) {
+    if (typeof state[1] != 'undefined') {
         console.log('target hashtag', state[1].entities.hashtags[0].text)
     }
 
@@ -18,6 +18,7 @@ const Dashboard = () => {
                 if (hashTag.text) {
                     console.log(hashTag.text)
                     // do the filter
+                    console.log('tweet.entities.hashtags', tweet.entities.hashtags[1])
                 }
             })
         }
