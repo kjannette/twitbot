@@ -4,8 +4,23 @@ const Dashboard = () => {
 
     const [state, setState ] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
-  
-    console.log('WHOLE STATE:',state)
+
+    console.log('Whole state', state)
+
+    if (state) {
+        console.log('target hashtag', state[1].entities.hashtags[0].text)
+    }
+
+    state.forEach((item) => {
+        console.log(item.entities.hashtags)
+        if (item.entities.hashtags) {
+            item.entities.hashtags.forEach((item) => {
+                if (item.text) {
+                    console.log(item.text)
+                }
+            })
+        }
+    })
 
     const hashTags = state.map((tweet) => {
         return tweet.entities.hashtags.map((hashtag) => {
@@ -25,8 +40,9 @@ const Dashboard = () => {
       })
     }
 
-    const handleFilter = () => {
-        console.log('handleFilter fired')
+    const handleFilter = (item) => {
+        console.log('handleFilter fired', item)
+
     }
   
     return (
@@ -38,7 +54,7 @@ const Dashboard = () => {
         <div>
             {
                 state.map((item, index) => (
-                    <div key={index}>`${item.text}`</div>
+                    <div key={index} id={item}>`${item.text}`</div>
                 ))
             }
         </div>
@@ -47,7 +63,7 @@ const Dashboard = () => {
             {
                 hashTags.map((tag) =>
                     tag.map((item, index) => (
-                        <button key={index} onClick={handleFilter}>{item}</button>
+                        <button key={index} onClick={() => handleFilter(item)}>{item}</button>
                     ))
                 )
             }
