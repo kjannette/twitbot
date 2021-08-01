@@ -11,12 +11,13 @@ const Dashboard = () => {
         console.log('target hashtag', state[1].entities.hashtags[0].text)
     }
 
-    state.forEach((item) => {
-        console.log(item.entities.hashtags)
-        if (item.entities.hashtags) {
-            item.entities.hashtags.forEach((item) => {
-                if (item.text) {
-                    console.log(item.text)
+    state.forEach((tweet) => {
+        console.log(tweet.entities.hashtags)
+        if (tweet.entities.hashtags) {
+            tweet.entities.hashtags.forEach((hashTag) => {
+                if (hashTag.text) {
+                    console.log(hashTag.text)
+                    // do the filter
                 }
             })
         }
