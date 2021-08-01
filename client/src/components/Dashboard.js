@@ -64,6 +64,7 @@ const Dashboard = () => {
             return tweet.entities.hashtags.some(el => el.text === item)
         })
         console.log('tempState', tempState)
+        setState(tempState)
     }
   
     return (
