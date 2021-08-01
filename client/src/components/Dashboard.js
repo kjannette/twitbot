@@ -12,6 +12,7 @@ const Dashboard = () => {
     }
 */
 
+/*
     state.forEach((tweet) => {
         console.log(tweet.entities.hashtags)
         if (tweet.entities.hashtags) {
@@ -24,17 +25,17 @@ const Dashboard = () => {
             })
         }
     })
+*/
+
+    //this works to filter:
 
     const simpleArray = () => {
-
         const arr = state.map((tweet) => {
             return tweet.entities.hashtags.map((hashtag) => {
               return hashtag.text;
             });
           });
-
         const res = [];
-        
         arr.forEach(element => {
            element.forEach(el => {
               res.push(el);
@@ -46,7 +47,7 @@ const Dashboard = () => {
     const hashTags = simpleArray()
 
     const getTweets = () => {
-      console.log(searchTerm)
+      //console.log(searchTerm)
       const url = '/tweets/' + searchTerm;
       fetch(url).then((response) => {
           return response.json()
@@ -58,8 +59,11 @@ const Dashboard = () => {
     }
 
     const handleFilter = (item) => {
-        console.log('handleFilter fired', item)
-
+        const tempState = state.filter((tweet) => {
+            console.log('filter tweet', tweet.entities.hashtags)
+            return tweet.entities.hashtags.some(el => el.text === item)
+        })
+        console.log('tempState', tempState)
     }
   
     return (
@@ -79,7 +83,7 @@ const Dashboard = () => {
         <div>
             {
                 hashTags.map((tag, index) =>
-                        <button key={index} onClick={() => handleFilter(tag)}>{tag}</button>
+                    <button key={index} onClick={() => handleFilter(tag)}>{tag}</button>
 
                 )
             }
