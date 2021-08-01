@@ -24,6 +24,10 @@ const Dashboard = () => {
           console.log(JSON.stringify(error));
       })
     }
+
+    const handleFilter = () => {
+        console.log('handleFilter fired')
+    }
   
     return (
       <div className="App">
@@ -43,7 +47,7 @@ const Dashboard = () => {
             {
                 hashTags.map((tag) =>
                     tag.map((item, index) => (
-                        <div key={index}>{item}</div>
+                        <button key={index} onClick={handleFilter}>{item}</button>
                     ))
                 )
             }
