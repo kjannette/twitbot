@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import TweetComponent from './TweetComponent'
 
 const Dashboard = () => {
 
@@ -66,12 +67,8 @@ const Dashboard = () => {
         {
         <div>
             {
-                state.map((item, index) => (
-                    <React.Fragment>
-                        <img src={`${item.user.profile_image_url}`}></img>
-                        <div>{item.user.name}</div>
-                        <div key={index} id={item}>{item.text}</div>
-                    </React.Fragment>
+                state.map((item, i) => (
+                    <TweetComponent {...item} index={i}/>
                 ))
             }
         </div>
@@ -94,4 +91,4 @@ const Dashboard = () => {
     );
   }
 
-  export default Dashboard;
+  export default Dashboard
