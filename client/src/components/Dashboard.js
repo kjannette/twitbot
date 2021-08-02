@@ -36,7 +36,16 @@ const Dashboard = () => {
     }
 
     const getMoreTweets = () => {
-        console.log("getMoreTweets FIRED")
+        /*
+        const url = '/tweets/' + searchTerm;
+        fetch(url).then((response) => {
+            return response.json()
+        }).then((data) => {
+            setState(...state, data.statuses)
+        }).catch((error) => {
+            console.log(JSON.stringify(error));
+        })
+        */
     }
 
     const handleFilter = (item) => {
@@ -67,7 +76,7 @@ const Dashboard = () => {
         </div>
         }
         <div>
-            <button className="searchButton" type="submit" onClick={getMoreTweets}></button>
+            <button className="searchButton" type="submit" onClick={getMoreTweets}>Load More</button>
         </div>
         <div>
             {hashTags.length > 1 &&
