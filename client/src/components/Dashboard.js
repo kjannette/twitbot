@@ -35,6 +35,10 @@ const Dashboard = () => {
       })
     }
 
+    const getMoreTweets = () => {
+        console.log("getMoreTweets FIRED")
+    }
+
     const handleFilter = (item) => {
         const tempState = state.filter((tweet) => {
             console.log('filter tweet', tweet.entities.hashtags)
@@ -62,6 +66,9 @@ const Dashboard = () => {
             }
         </div>
         }
+        <div>
+            <button className="searchButton" type="submit" onClick={getMoreTweets}></button>
+        </div>
         <div>
             {hashTags.length > 1 &&
                 <div>Filter By Hashtag</div>
