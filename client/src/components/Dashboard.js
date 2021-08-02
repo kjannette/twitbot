@@ -55,7 +55,8 @@ const Dashboard = () => {
                 state.map((item, index) => (
                     <React.Fragment>
                         <img src={`${item.user.profile_image_url}`}></img>
-                        <div key={index} id={item}>`${item.text}`</div>
+                        <div>{item.user.name}</div>
+                        <div key={index} id={item}>{item.text}</div>
                     </React.Fragment>
                 ))
             }
