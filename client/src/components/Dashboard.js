@@ -7,7 +7,7 @@ const Dashboard = () => {
 
     console.log('Whole state', state)
 
-    const simpleArray = () => {
+    const reduceArray = () => {
         const arr = state.map((tweet) => {
             return tweet.entities.hashtags.map((hashtag) => {
               return hashtag.text;
@@ -22,7 +22,7 @@ const Dashboard = () => {
         return res;
      };
 
-    const hashTags = simpleArray()
+    const hashTags = reduceArray()
 
     const getTweets = () => {
       const url = '/tweets/' + searchTerm;
