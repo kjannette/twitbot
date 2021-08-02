@@ -36,16 +36,17 @@ const Dashboard = () => {
     }
 
     const getMoreTweets = () => {
-        /*
         const url = '/tweets/' + searchTerm;
         fetch(url).then((response) => {
             return response.json()
         }).then((data) => {
-            setState(...state, data.statuses)
+            data.statuses.forEach((status) => {
+                setState( arr => [...arr, status]);
+            })
         }).catch((error) => {
             console.log(JSON.stringify(error));
         })
-        */
+
     }
 
     const handleFilter = (item) => {
