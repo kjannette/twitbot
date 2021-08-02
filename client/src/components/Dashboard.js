@@ -82,6 +82,9 @@ const Dashboard = () => {
         </div>
         }
         <div>
+            {hashTags.length > 1 &&
+                <div>Filter By Hashtag</div>
+            }
             {
                 hashTags.map((tag, index) =>
                     <button key={index} onClick={() => handleFilter(tag)}>{tag}</button>
