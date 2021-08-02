@@ -6,28 +6,6 @@ const Dashboard = () => {
     const [searchTerm, setSearchTerm] = useState('')
 
     console.log('Whole state', state)
-/*
-    if (typeof state[0] != 'undefined') {
-        console.log('target hashtag', state[0].entities.hashtags[0].text)
-    }
-*/
-
-/*
-    state.forEach((tweet) => {
-        console.log(tweet.entities.hashtags)
-        if (tweet.entities.hashtags) {
-            tweet.entities.hashtags.forEach((hashTag, index) => {
-                if (hashTag.text) {
-                    console.log('hashTag.text', hashTag.text)
-                    // do the filter
-                    //console.log('tweet.entities.hashtags', tweet.entities.hashtags[index])
-                }
-            })
-        }
-    })
-*/
-
-    //this works to filter:
 
     const simpleArray = () => {
         const arr = state.map((tweet) => {
@@ -47,7 +25,6 @@ const Dashboard = () => {
     const hashTags = simpleArray()
 
     const getTweets = () => {
-      //console.log(searchTerm)
       const url = '/tweets/' + searchTerm;
       fetch(url).then((response) => {
           return response.json()
@@ -97,37 +74,3 @@ const Dashboard = () => {
   }
 
   export default Dashboard;
-
-  /*
-
-      /*
-
-    dummyTags.forEach((tag) => {
-        tag.forEach((item, index) => {
-            return console.log('dummy tags', item)
-        })
-    })
-
-    /*
-      console.log('hashTags from map', hashTags)
-    
-    hashTags.forEach((tag) => {
-        tag.forEach((item, i) => {
-            return console.log('foreach tags:', item[i])
-        })
-    })
-
-
-const dummyTags = [
-    [],
-    ['itemOne', 'itemTwo', 'itemThree'],
-    []
-]
-
-dummyTags.map((tag) => {
-    tag.map((item) => {
-        console.log(item)
-    })
-})
-
-*/
