@@ -26,13 +26,4 @@ app.get('/tweets/:search', function (req, res) {
     })
 })
 
-app.post('/comment/', function (req, res) {
-    console.log(req.body.comment);
-    T.post('statuses/update', {
-        status: req.body.comment
-    }, function (err, data, response) {
-        res.json(data)
-    })
-})
-
 app.listen(3001)
