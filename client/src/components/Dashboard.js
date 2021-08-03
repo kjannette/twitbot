@@ -43,7 +43,8 @@ const Dashboard = () => {
             return response.json()
         }).then((data) => {
             data.statuses.forEach((status) => {
-                setState(state => [...state, status]);
+                console.log('NEW STATUS:', status)
+                setState(arr => [...arr, status] );
             })
         }).catch((error) => {
             console.log(JSON.stringify(error));
