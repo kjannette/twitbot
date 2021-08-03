@@ -4,13 +4,13 @@ import HashTagComponent from './HashTagComponent'
 
 const Dashboard = () => {
 
-    const [state, setState ] = useState([])
+    const [tweets, setTweets ] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
 
-    console.log('Whole state', state)
+    console.log('Whole state', tweets)
 
     const reduceArray = () => {
-        const arr = state.map((tweet) => {
+        const arr = tweets.map((tweet) => {
             return tweet.entities.hashtags.map((hashtag) => {
               return hashtag.text;
             });
@@ -31,7 +31,7 @@ const Dashboard = () => {
       fetch(url).then((response) => {
           return response.json()
       }).then((data) => {
-          setState(data.statuses)
+          setTweets(data.statuses)
       }).catch((error) => {
           console.log(JSON.stringify(error));
       })
@@ -44,7 +44,7 @@ const Dashboard = () => {
         }).then((data) => {
             data.statuses.forEach((status) => {
                 console.log('NEW STATUS:', status)
-                setState(arr => [...arr, status] );
+                setTweets(arr => [...arr, status] );
             })
         }).catch((error) => {
             console.log(JSON.stringify(error));
@@ -53,12 +53,12 @@ const Dashboard = () => {
     }
 
     const handleFilter = (item) => {
-        const tempState = state.filter((tweet) => {
+        const tempState = tweets.filter((tweet) => {
             console.log('filter tweet', tweet.entities.hashtags)
             return tweet.entities.hashtags.some(el => el.text === item)
         })
         console.log('tempState', tempState)
-        setState(tempState)
+        setTweets(tempState)
     }
   
     return (
@@ -66,7 +66,7 @@ const Dashboard = () => {
         <div>Tweet Feed</div>
         <input type="text" onChange={event => setSearchTerm(event.target.value)}></input>
         <button className="searchButton" type="submit" onClick={getTweets}>Search</button>
-        {state.map((item, i) => (
+        {tweets.map((item, i) => (
             <TweetComponent {...item} index={i}/>
         ))}
         <div>
