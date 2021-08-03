@@ -37,7 +37,7 @@ const Dashboard = () => {
       })
     }
 
-    const getMoreTweets = () => {
+    const addTweets = () => {
         const url = '/tweets/' + searchTerm;
         fetch(url).then((response) => {
             return response.json()
@@ -70,7 +70,7 @@ const Dashboard = () => {
             <TweetComponent {...item} index={i}/>
         ))}
         <div>
-            <button className="searchButton" type="submit" onClick={getMoreTweets}>Load More</button>
+            <button className="searchButton" type="submit" onClick={addTweets}>Load More</button>
         </div>
         <div>
             <HashTagComponent hashTags={hashTags} action={handleFilter} />
