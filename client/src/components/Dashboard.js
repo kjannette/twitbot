@@ -7,20 +7,15 @@ const Dashboard = () => {
     const [tweets, setTweets ] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
 
-    console.log('Whole state', tweets)
+    //console.log('Whole state', tweets)
 
     const reduceArray = () => {
-        const arr = tweets.map((tweet) => {
+        const res = [];
+        tweets.map((tweet) => {
             return tweet.entities.hashtags.map((hashtag) => {
-              return hashtag.text;
+                res.push(hashtag.text);
             });
           });
-        const res = [];
-        arr.forEach(element => {
-           element.forEach(el => {
-              res.push(el);
-           });
-        });
         return res;
      };
 
@@ -59,7 +54,7 @@ const Dashboard = () => {
             console.log('filter tweet', tweet.entities.hashtags)
             return tweet.entities.hashtags.some(el => el.text === item)
         })
-        console.log('tempState', tempState)
+        //console.log('tempState', tempState)
         setTweets(tempState)
     }
   
