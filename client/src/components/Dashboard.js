@@ -7,8 +7,6 @@ const Dashboard = () => {
     const [tweets, setTweets ] = useState([])
     const [searchTerm, setSearchTerm] = useState('')
 
-    //console.log('Whole state', tweets)
-
     const reduceArray = () => {
         const res = [];
         tweets.map((tweet) => {
@@ -40,21 +38,17 @@ const Dashboard = () => {
             return response.json()
         }).then((data) => {
             data.statuses.forEach((status) => {
-                console.log('NEW STATUS:', status)
                 setTweets(arr => [...arr, status] );
             })
         }).catch((error) => {
             console.log(JSON.stringify(error));
         })
-
     }
 
     const handleFilter = (item) => {
         const tempState = tweets.filter((tweet) => {
-            console.log('filter tweet', tweet.entities.hashtags)
             return tweet.entities.hashtags.some(el => el.text === item)
         })
-        //console.log('tempState', tempState)
         setTweets(tempState)
     }
   
