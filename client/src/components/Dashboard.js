@@ -66,12 +66,24 @@ const Dashboard = () => {
     return (
       <div className="App">
         <div>Tweet Feed</div>
-        <input type="text" placeholder="Search by keyword" onChange={event => setSearchTerm(event.target.value)} onKeyDown={getTweets}></input>
+        <input 
+            type="text" 
+            placeholder="Search by keyword" 
+            onChange={e => setSearchTerm(e.target.value)} 
+            onKeyDown={getTweets}
+        >
+        </input>
         {tweets.map((item, i) => (
             <TweetComponent {...item} index={i}/>
         ))}
         <div>
-            <button className="searchButton" type="submit" onClick={addTweets}>Load More</button>
+            <button 
+                className="searchButton" 
+                type="submit" 
+                onClick={addTweets}
+            >
+                Load More
+            </button>
         </div>
         <div>
             <HashTagComponent hashTags={hashTags} action={handleFilter} />
