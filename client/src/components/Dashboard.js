@@ -26,15 +26,17 @@ const Dashboard = () => {
 
     const hashTags = reduceArray()
 
-    const getTweets = () => {
-      const url = '/tweets/' + searchTerm;
-      fetch(url).then((response) => {
-          return response.json()
-      }).then((data) => {
-          setTweets(data.statuses)
-      }).catch((error) => {
-          console.log(JSON.stringify(error));
-      })
+    const getTweets = (e) => {
+        if (e.key === 'Enter') {
+            const url = '/tweets/' + searchTerm;
+            fetch(url).then((response) => {
+                return response.json()
+            }).then((data) => {
+                setTweets(data.statuses)
+            }).catch((error) => {
+                console.log(JSON.stringify(error));
+            })
+        }
     }
 
     const addTweets = () => {
@@ -64,8 +66,7 @@ const Dashboard = () => {
     return (
       <div className="App">
         <div>Tweet Feed</div>
-        <input type="text" onChange={event => setSearchTerm(event.target.value)}></input>
-        <button className="searchButton" type="submit" onClick={getTweets}>Search</button>
+        <input type="text" placeholder="Search by keyword" onChange={event => setSearchTerm(event.target.value)} onKeyDown={getTweets}></input>
         {tweets.map((item, i) => (
             <TweetComponent {...item} index={i}/>
         ))}
