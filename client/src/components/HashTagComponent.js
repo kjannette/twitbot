@@ -8,7 +8,7 @@ const HashTagComponent = (props) => {
                 <div>Filter By Hashtag</div>
             }
             {props.hashTags.map((tag, index) =>
-                <button key={index} onClick={() => props.action(tag)}>{tag}</button>
+                <button key={index} onClick={() => props.action(tag)}>{`#${tag}`}</button>
 
             )}
         </div>
