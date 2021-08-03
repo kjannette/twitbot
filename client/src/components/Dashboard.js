@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 import TweetComponent from './TweetComponent'
+import HashTagComponent from './HashTagComponent'
 
 const Dashboard = () => {
 
@@ -42,7 +43,7 @@ const Dashboard = () => {
             return response.json()
         }).then((data) => {
             data.statuses.forEach((status) => {
-                setState( arr => [...arr, status]);
+                setState(state => [...state, status]);
             })
         }).catch((error) => {
             console.log(JSON.stringify(error));
@@ -64,31 +65,17 @@ const Dashboard = () => {
         <div>Tweet Feed</div>
         <input type="text" onChange={event => setSearchTerm(event.target.value)}></input>
         <button className="searchButton" type="submit" onClick={getTweets}>Search</button>
-        {
-        <div>
-            {
-                state.map((item, i) => (
-                    <TweetComponent {...item} index={i}/>
-                ))
-            }
-        </div>
-        }
+        {state.map((item, i) => (
+            <TweetComponent {...item} index={i}/>
+        ))}
         <div>
             <button className="searchButton" type="submit" onClick={getMoreTweets}>Load More</button>
         </div>
         <div>
-            {hashTags.length > 1 &&
-                <div>Filter By Hashtag</div>
-            }
-            {
-                hashTags.map((tag, index) =>
-                    <button key={index} onClick={() => handleFilter(tag)}>{tag}</button>
-
-                )
-            }
+            <HashTagComponent hashTags={hashTags} action={handleFilter} />
         </div>
       </div>
     );
   }
 
-  export default Dashboard
+  export default Dashboard;

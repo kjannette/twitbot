@@ -13,4 +13,4 @@ const TweetComponent = (props) => {
     )
 }
 
-export default TweetComponent
+export default TweetComponent;
